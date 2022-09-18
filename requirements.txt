@@ -1,9 +1,1 @@
-joblib==1.0.1
-matplotlib==3.3.4
-numpy==1.19.2
-pandas==1.2.3
-scikit_learn==1.1.2
-scipy<1.6.1
-seaborn==0.11.1
-streamlit==1.12.2
-tensorflow==2.4.1
+-e "numpy==1.9.2\nscipy==0.15.1" 

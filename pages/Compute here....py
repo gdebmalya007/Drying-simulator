@@ -134,17 +134,17 @@ redinnet_sc= scalerld.transform(redinnet)
 
 @stlt.experimental_singleton
 def loadmods():
-    firmod1=tf.keras.models.load_model(dirpath+'/modelfull1stack')
+    firmod1=tf.keras.models.load_model(dirpath+'/modelfull1stack_new')
     #firmod1._make_predict_function()
-    firmod2=tf.keras.models.load_model(dirpath+'/modelfull2stack')
+    firmod2=tf.keras.models.load_model(dirpath+'/modelfull2stack_new')
     #firmod2._make_predict_function()
-    firmod3=tf.keras.models.load_model(dirpath+'/modelfull3stack')
+    firmod3=tf.keras.models.load_model(dirpath+'/modelfull3stack_new')
     #firmod3._make_predict_function()
-    modstackT=tf.keras.models.load_model(dirpath+'/try1')
+    modstackT=tf.keras.models.load_model(dirpath+'/try1_new')
     #modstackT._make_predict_function()
-    modstackTi=tf.keras.models.load_model(dirpath+'/try3imp')
+    modstackTi=tf.keras.models.load_model(dirpath+'/try3imp_new')
     #modstackTi._make_predict_function()
-    modstackcl=tf.keras.models.load_model(dirpath+'/try1cl')
+    modstackcl=tf.keras.models.load_model(dirpath+'/try1cl_new')
     #modstackcl._make_predict_function()
     time.sleep(1)
     return firmod1, firmod2, firmod3, modstackT, modstackTi, modstackcl

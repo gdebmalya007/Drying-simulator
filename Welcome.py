@@ -25,7 +25,7 @@ import seaborn as sns
 import streamlit as stlt
 stlt.title('High-fidelity simulation in a blink!')
 
-stlt.image('media\schematic.jpg')
+stlt.image('schematic.jpg')
 stlt.write(' This appliction computes the change in temperature and moisture profiles in a 2d or 2d axisymmetric geometry for different product and process parameter values.' 
            ' With a total of 13 parameters available to change the possibilities of performing what-if scenarios are endless! '
             ' The model is based on a dynamic LSTM deep learning framework which is trained with the solution from a comprehensive multiphase and multiphysics based mechanistic model.')

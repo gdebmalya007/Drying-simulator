@@ -75,9 +75,9 @@ rhob= (610.7*np.power(10,(7.5*(Tb-273.15)/(Tb-35.85)))*rh/100*0.018)/(8.314*Tb)
 xv=(610.7*np.power(10,(7.5*(Ti-273.15)/(Ti-35.85))))/presi
 hm=0.5*ht*dv*np.power((0.025/(1.225*1.01e3*dv)),0.33)/0.025
 rng=default_rng()
-tpapnp=joblib.load(r'timestp.pckl')
+tpapnp=joblib.load(dirpath+'/timestp.pckl')
 tstpch=np.sort(rng.choice(tpapnp,600,replace=False))
-grddat=pd.read_csv(r'griddat.csv',usecols=[0,1],skiprows=0,header=None)
+grddat=pd.read_csv(dirpath+'/griddat.csv',usecols=[0,1],skiprows=0,header=None)
 inrowsingle=np.array([presi,Ti,Xo,Tb,presb,rhob,ht,hm,k_evap,dv,por,kp,cp,rhop,indbin,
                       wi,th,xv]).reshape(-1,18)
 inmatcont=np.repeat(np.repeat(inrowsingle,600,axis=0).reshape(-1,600,18),800,axis=0)
@@ -128,23 +128,23 @@ class NDStandardScaler(TransformerMixin):
         X = self._reshape(X)
         return X
 scalerld=NDStandardScaler()
-scalerld=joblib.load(r'scalernew.pckl')
+scalerld=joblib.load(dirpath+'/scalernew.pckl')
 redinnet_sc= scalerld.transform(redinnet)
 #@stlt.cache(suppress_st_warning=True,allow_output_mutation=True)
 
 @stlt.experimental_singleton
 def loadmods():
-    firmod1=tf.keras.models.load_model(r'modelfull1stack')
+    firmod1=tf.keras.models.load_model(dirpath+'/modelfull1stack')
     #firmod1._make_predict_function()
-    firmod2=tf.keras.models.load_model(r'modelfull2stack')
+    firmod2=tf.keras.models.load_model(dirpath+'/modelfull2stack')
     #firmod2._make_predict_function()
-    firmod3=tf.keras.models.load_model(r'modelfull3stack')
+    firmod3=tf.keras.models.load_model(dirpath+'/modelfull3stack')
     #firmod3._make_predict_function()
-    modstackT=tf.keras.models.load_model(r'try1')
+    modstackT=tf.keras.models.load_model(dirpath+'/try1')
     #modstackT._make_predict_function()
-    modstackTi=tf.keras.models.load_model(r'try3imp')
+    modstackTi=tf.keras.models.load_model(dirpath+'/try3imp')
     #modstackTi._make_predict_function()
-    modstackcl=tf.keras.models.load_model(r'try1cl')
+    modstackcl=tf.keras.models.load_model(dirpath+'/try1cl')
     #modstackcl._make_predict_function()
     time.sleep(1)
     return firmod1, firmod2, firmod3, modstackT, modstackTi, modstackcl
@@ -161,8 +161,8 @@ modfinalcl=stackcl.predict([modout1[:,:,1:2],modout2[:,:,1:2],modout3[:,:,1:2],m
 
 
 
-maxTval=joblib.load(r'maxv')
-minTval=joblib.load(r'minv')
+maxTval=joblib.load(dirpath+'/maxv')
+minTval=joblib.load(dirpath+'/minv')
 modfinalT_nsc=modfinalT*(maxTval-minTval)+minTval
 modoutT1_nsc=modout1[:,:,0:1]*(maxTval-minTval)+minTval
 modoutT2_nsc=modout2[:,:,0:1]*(maxTval-minTval)+minTval

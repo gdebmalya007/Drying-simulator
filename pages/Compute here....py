@@ -25,6 +25,7 @@ from sklearn.preprocessing import StandardScaler
 import seaborn as sns
 import streamlit as stlt
 import time
+
 dirpath=os.getcwd()
 stlt.title('Drying simulator')
 with stlt.sidebar:
